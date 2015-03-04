@@ -6,7 +6,11 @@ module Elasticsearch
       subject { Elasticsearch::DSL::Search::Search.new }
 
       context "The Search module" do
-        should "have the search method" do
+        should "have the search module method" do
+          assert_instance_of Elasticsearch::DSL::Search::Search, Elasticsearch::DSL::Search.search
+        end
+
+        should "inject the search method into the receiver" do
           class DummySearchReceiver
             include Elasticsearch::DSL::Search
           end
